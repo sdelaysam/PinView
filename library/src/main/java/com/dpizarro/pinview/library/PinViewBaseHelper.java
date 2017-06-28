@@ -347,29 +347,6 @@ abstract class PinViewBaseHelper extends LinearLayout implements TextWatcher, Vi
     }
 
     /**
-     * Check for an empty PinBox {@link EditText} from the current PinBox.
-     * Set focus in the next empty PinBox or notify that {@link PinView} is completed.
-     */
-    private void checkPinBoxesAvailable() {
-
-        int index = -1;
-        int i = currentFocus + 1;
-        while (i != currentFocus) {
-
-            if (i > (mNumberPinBoxes - 1)) {
-                i = 0;
-            }
-
-            if (pinBoxIsEmpty(i)) {
-                index = i;
-                break;
-            }
-            i++;
-        }
-        chooseNextAction(index);
-    }
-
-    /**
      * Set results in current {@link PinView}, considering the number of character PinBoxes and each PinBox.
      *
      * @param pinResults saved results to set
@@ -422,18 +399,16 @@ abstract class PinViewBaseHelper extends LinearLayout implements TextWatcher, Vi
      */
     @Override
     public void onTextChanged(CharSequence s, int start, int before, int count) {
-
         if (findFocus() != null) {
             currentFocus = Integer.parseInt(findFocus().getTag().toString());
         }
 
         if (count == 1 && s.length() == mNumberCharacters) {
-            if (currentFocus == (mNumberPinBoxes - 1) || currentFocus == 0) {
-                checkPinBoxesAvailableOrder();
+            if (currentFocus + 1 == mNumberPinBoxes) {
+                chooseNextAction(-1);
             } else {
-                checkPinBoxesAvailable();
+                chooseNextAction(currentFocus + 1);
             }
-
         }
     }
 
