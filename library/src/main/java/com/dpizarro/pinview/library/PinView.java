@@ -121,6 +121,7 @@ public class PinView extends PinViewBaseHelper {
      */
     public void setPinText(String pinText) {
         setPinResults(pinText);
+        checkPinBoxesAvailableOrder();
     }
 
     @Override
