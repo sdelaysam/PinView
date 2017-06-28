@@ -375,7 +375,7 @@ abstract class PinViewBaseHelper extends LinearLayout implements TextWatcher, Vi
      *
      * @param pinResults saved results to set
      */
-    void setPinResults(String pinResults) {
+    public void setPinResults(String pinResults) {
         for (int i = 0; i < mNumberPinBoxes; i++) {
             if (pinResults != null) {
                 int start = i*mNumberCharacters;
