@@ -202,9 +202,8 @@ abstract class PinViewBaseHelper extends LinearLayout implements TextWatcher, Vi
 
         if (mMaskPassword) {
             editText.setTransformationMethod(PasswordTransformationMethod.getInstance());
-        }
-        else{
-            editText.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+        } else {
+            editText.setTransformationMethod(null);
         }
 
         if (mNativePinBox) {
