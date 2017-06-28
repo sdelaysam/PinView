@@ -114,6 +114,15 @@ public class PinView extends PinViewBaseHelper {
         }
     }
 
+    /**
+     * Set results in current {@link PinView}, considering the number of character PinBoxes and each PinBox.
+     *
+     * @param pinText pin text to to set
+     */
+    public void setPinText(String pinText) {
+        setPinResults(pinText);
+    }
+
     @Override
     protected void notifyPinViewCompleted() {
         if (onCompleteListener != null) {
